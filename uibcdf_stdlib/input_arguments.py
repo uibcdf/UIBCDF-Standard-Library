@@ -2,7 +2,7 @@ import pyunitwizard as puw
 import numpy as np
 from .lists_and_tuples import is_list_or_tuple
 
-def check_input_argument(argument, argument_type, shape=None, dimensionality=None):
+def check_input_argument(argument, argument_type, shape=None, dimensionality=None, value_type=None):
 
     if argument is 'ndarray':
         argument=np.ndarray
