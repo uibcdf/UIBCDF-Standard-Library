@@ -19,7 +19,17 @@ development:
     - pyunitwizard
     - jupyterlab
     - pyyaml
-
+    - pytest
+    - pip
+    - pytest-cov
+    - codecov
+    - sphinx
+    - sphinx_rtd_theme
+    - sphinxcontrib-bibtex
+    - nbsphinx
+    - recommonmark
+    - sphinx-markdown-tables
+ 
 test:
   channels:
     - uibcdf/label/dev
