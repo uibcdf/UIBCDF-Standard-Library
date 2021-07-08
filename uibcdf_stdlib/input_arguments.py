@@ -37,7 +37,7 @@ def _check_single_input_argument(argument, argument_type, shape=None, dimensiona
 
         if output:
             if shape is not None:
-                output = (np.shape(argument)==shape)
+                output = (np.shape(argument)==tuple(shape))
 
     return output
 
