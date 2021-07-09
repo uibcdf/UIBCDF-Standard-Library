@@ -45,3 +45,8 @@ def test_7():
     output = check_input_argument(argument, 'quantity', shape=(3), unit='ns')
     assert output == False
 
+def test_8():
+    argument = puw.quantity([0,0,0], 'nm')
+    output = check_input_argument(argument, 'quantity', value_type=[list, tuple, np.ndarray])
+    assert output == True
+
