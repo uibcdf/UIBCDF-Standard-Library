@@ -21,7 +21,7 @@ def check_input_argument(argument, argument_type, shape=None, dtype_name=None, d
 
     else:
 
-        output = _check_single_input_argument(argument, aux_argument_type, shape=shape,
+        output = _check_single_input_argument(argument, argument_type, shape=shape,
                 dtype_name=dtype_name, dimensionality=dimensionality, value_type=value_type, unit=unit)
 
     return output
@@ -31,8 +31,8 @@ def _check_single_input_argument(argument, argument_type, shape=None, dtype_name
 
     if argument_type is 'quantity':
 
-        output = local_puw.check(argument, dimensionality=dimensionality, value_type=value_type,
-                                 shape=shape, dtype_name=dtype_name, unit=unit)
+        output = puw.check(argument, dimensionality=dimensionality, value_type=value_type,
+                           shape=shape, dtype_name=dtype_name, unit=unit)
 
     else:
 

@@ -4,5 +4,4 @@ channels:
 - conda-forge
 - default
 dependencies:
-- python
 - pyunitwizard

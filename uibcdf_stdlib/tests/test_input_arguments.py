@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from uibcdf_stdlib.inputs_arguments import check_input_argument
+from uibcdf_stdlib.input_arguments import check_input_argument
 import pyunitwizard as puw
 puw.configure.load_library('pint')
 
@@ -31,7 +31,8 @@ def test_4():
 
 def test_5():
     argument = puw.quantity([0,0,0], 'nm/ps')
-    output = check_input_argument(argument, 'quantity', dimensionality={'[L]':1, '[T]':-1}, value_type=list, shape=(3,))
+    output = check_input_argument(argument, 'quantity', dimensionality={'[L]':1, '[T]':-1},
+                                  value_type=np.ndarray, shape=(3,))
     assert output == True
 
 def test_6():
@@ -41,6 +42,6 @@ def test_6():
 
 def test_7():
     argument = puw.quantity(np.array([0,0,0]), 'ps')
-    output = check_input_argument(argument, 'quantity', shape=(3,), unit='ns')
-    assert output == True
+    output = check_input_argument(argument, 'quantity', shape=(3), unit='ns')
+    assert output == False
 
