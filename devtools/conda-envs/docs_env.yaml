@@ -5,6 +5,7 @@ channels:
 - default
 dependencies:
 - pyunitwizard
+- matplotlib
 - sphinx
 - sphinx_rtd_theme
 - sphinxcontrib-bibtex

@@ -5,3 +5,4 @@ channels:
 - default
 dependencies:
 - pyunitwizard
+- matplotlib
