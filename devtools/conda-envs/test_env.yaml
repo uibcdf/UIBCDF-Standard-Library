@@ -5,6 +5,7 @@ channels:
 - default
 dependencies:
 - pyunitwizard
+- matplotlib
 - pytest
 - pip
 - pytest-cov

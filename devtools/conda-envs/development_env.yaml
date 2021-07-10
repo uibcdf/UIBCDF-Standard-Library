@@ -5,6 +5,7 @@ channels:
 - default
 dependencies:
 - pyunitwizard
+- matplotlib
 - jupyterlab
 - pyyaml
 - pytest
