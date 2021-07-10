@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>uibcdf_stdlib.colors &mdash; UIBCDF-Standard-Library 0+untagged.1.g16665d1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> UIBCDF-Standard-Library
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Library Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contents/test.html">Test</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UIBCDF-Standard-Library</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>uibcdf_stdlib.colors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for uibcdf_stdlib.colors</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Module with methods to work with color codes and palettes</span>
+
+<span class="sd">Set of tools to work with color codes.</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">    Most of the methods in this module are nothing but a wrapper of a method or a combination of</span>
+<span class="sd">    methods belonging to the module `colors` of the library MatPlotLib.</span>
+
+<span class="sd">.. _matplotlib colors api:</span>
+<span class="sd">   https://matplotlib.org/stable/api/colors_api.html</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span> <span class="k">as</span> <span class="n">plt_colors</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<div class="viewcode-block" id="rgb2hex"><a class="viewcode-back" href="../../autosummary/uibcdf_stdlib.colors.rgb2hex.html#uibcdf_stdlib.colors.rgb2hex">[docs]</a><span class="k">def</span> <span class="nf">rgb2hex</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Method to convert a normalized RGB color code to HEX color code</span>
+
+<span class="sd">    Conversion of a normalized RGB color (a list of three float numbers between 0.0 and 1.0) to HEX</span>
+<span class="sd">    color code. This method is nothing but a wrapper of the tool `matplotlib.colors.to_hex` with the</span>
+<span class="sd">    input argument &#39;keep_apha=False&#39;.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    color: :obj:`list` of :obj:`float`</span>
+<span class="sd">        Normalized RGB color code (three float numbers between 0.0 and 1.0)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        HEX color code with the form &quot;#RRGGBB&quot;</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; from uibcdf_stdlib.colors import rgb2hex</span>
+<span class="sd">    &gt;&gt;&gt; rgb2hex([0.0, 0.5, 0.5])</span>
+<span class="sd">    &#39;#008080&#39;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">plt_colors</span><span class="o">.</span><span class="n">to_hex</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">keep_alpha</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="hex2rgb"><a class="viewcode-back" href="../../autosummary/uibcdf_stdlib.colors.hex2rgb.html#uibcdf_stdlib.colors.hex2rgb">[docs]</a><span class="k">def</span> <span class="nf">hex2rgb</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Method to convert an HEX color code to normalized RGB color code</span>
+
+<span class="sd">    Conversion of an HEX color code to normalized RGB color code (a list of three float numbers</span>
+<span class="sd">    between 0.0 and 1.0). This method is nothing but a wrapper of the tool</span>
+<span class="sd">    `matplotlib.colors.to_rgb`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    color: str</span>
+<span class="sd">        HEX color code</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :obj:`list` of :obj:`float`</span>
+<span class="sd">        Normalized RGB color code (three float numbers between 0.0 and 1.0)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; from uibcdf_stdlib.colors import hex2rgb</span>
+<span class="sd">    &gt;&gt;&gt; hex2rgb(&#39;#008080&#39;)</span>
+<span class="sd">    (0.0, 0.5019607843137255, 0.5019607843137255)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">plt_colors</span><span class="o">.</span><span class="n">to_rgb</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="is_hex"><a class="viewcode-back" href="../../autosummary/uibcdf_stdlib.colors.is_hex.html#uibcdf_stdlib.colors.is_hex">[docs]</a><span class="k">def</span> <span class="nf">is_hex</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot; Method to check if a color code is hexadecimal (HEX)</span>
+
+<span class="sd">    This method returns the value True if the input argument corresponds to an hexadecimal color</span>
+<span class="sd">    code.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    color: :obj:</span>
+<span class="sd">        Color code</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if the input color code takes the hexadecimal (HEX) form.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; from uibcdf_stdlib.colors import is_hex</span>
+<span class="sd">    &gt;&gt;&gt; is_hex(&#39;#008080&#39;)</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; is_hex([0.0, 0.5, 0.5])</span>
+<span class="sd">    False</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">output</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">==</span><span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">==</span><span class="mi">6</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">==</span><span class="mi">7</span> <span class="ow">and</span> <span class="n">color</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">output</span></div>
+
+<div class="viewcode-block" id="is_rgb"><a class="viewcode-back" href="../../autosummary/uibcdf_stdlib.colors.is_rgb.html#uibcdf_stdlib.colors.is_rgb">[docs]</a><span class="k">def</span> <span class="nf">is_rgb</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot; Method to check if a color code is normalized decimal RGB.</span>
+
+<span class="sd">    This method returns the value True if the input argument corresponds to a normalized decimal</span>
+<span class="sd">    RGB color code (three float numbers in a list or tuple with values between 0.0 and 1.0).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    color: :obj:</span>
+<span class="sd">        Color code</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if the input color code takes the normalized decimal RGB form.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; from uibcdf_stdlib.colors import is_rgb</span>
+<span class="sd">    &gt;&gt;&gt; is_rgb(&#39;#008080&#39;)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; is_rgb([0.0, 0.5, 0.5])</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">output</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">color</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">==</span><span class="p">(</span><span class="mi">3</span><span class="p">,):</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="nb">type</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">color</span><span class="p">]):</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">output</span></div>
+
+<div class="viewcode-block" id="convert"><a class="viewcode-back" href="../../autosummary/uibcdf_stdlib.colors.convert.html#uibcdf_stdlib.colors.convert">[docs]</a><span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">to_form</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot; Conversion method between different formats of color codes</span>
+
+<span class="sd">    This method converts color codes between different formats: normalized decimal RGB and</span>
+<span class="sd">    hexadecimal HEX, at the moment.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    color: :obj:</span>
+<span class="sd">        Color code</span>
+<span class="sd">    to_form: str</span>
+<span class="sd">        Format of the output color code: &#39;rgb&#39; or &#39;hex&#39;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :obj:</span>
+<span class="sd">        Color code taking the format specified by the input argument `to_form`.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; from uibcdf_stdlib.colors import convert</span>
+<span class="sd">    &gt;&gt;&gt; convert(&#39;#008080&#39;, to_form=&#39;rgb&#39;)</span>
+<span class="sd">    (0.0, 0.5019607843137255, 0.5019607843137255)</span>
+<span class="sd">    &gt;&gt;&gt; convert(&#39;#008080&#39;, to_form=&#39;hex&#39;)</span>
+<span class="sd">    &#39;#008080&#39;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">output</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">to_form</span><span class="o">==</span><span class="s1">&#39;rgb&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_rgb</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="k">elif</span> <span class="n">is_hex</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">hex2rgb</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This color format was not implemented yet&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">to_form</span><span class="o">==</span><span class="s1">&#39;hex&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_rgb</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">rgb2hex</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">is_hex</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This color format was not implemented yet&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">output</span></div>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, UIBCDF Lab at the Mexico City Childrens Hospital Federico Gomez and authors.Project structure based on the Computational Molecular Science Python Cookiecutter version 1.5.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
