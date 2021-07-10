@@ -6,6 +6,7 @@ production:
     - default
   dependencies:
     - pyunitwizard
+    - matplotlib
 
 development:
   channels:
@@ -15,6 +16,7 @@ development:
     - default
   dependencies:
     - pyunitwizard
+    - matplotlib
     - jupyterlab
     - pyyaml
     - pytest
@@ -36,6 +38,7 @@ test:
     - default
   dependencies:
     - pyunitwizard
+    - matplotlib
     - pytest
     - pip
     - pytest-cov
@@ -49,6 +52,7 @@ docs:
     - default
   dependencies:
     - pyunitwizard
+    - matplotlib
     - sphinx
     - sphinx_rtd_theme
     - sphinxcontrib-bibtex
